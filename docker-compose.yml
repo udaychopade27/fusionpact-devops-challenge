@@ -13,8 +13,7 @@ services:
     ports:
       - "5001:80" # Expose frontend service on port 5001
     volumes:
-      - frontend-data:/var/www/html  
-      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf
+      - frontend-data:/var/www/html
     depends_on:
       - backend 
 

@@ -1,13 +1,15 @@
 version: '3.8'
 services:
   backend:
-    container_name: uday27/fusionpact-backend:v1.0
+    image: uday27/fusionpact-backend:v1.0
+    container_name: fusionpact-backend
     ports:
       - "5000:5000" # Expose backend service on port 5000
     volumes:
       - backend-data:/app
   frontend:
-    container_name: uday27/fusionpact-frontend:v1.0
+    image: uday27/fusionpact-frontend:v1.0
+    container_name: fusionpact-frontend
     ports:
       - "5001:80" # Expose frontend service on port 5001
     volumes:

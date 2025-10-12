@@ -7,15 +7,15 @@ scrape_configs:
 
     scrape_interval: 5s
     static_configs:
-      - targets: ['prometheus:9090']
+      - targets: ['34.215.182.184:9090']
 
   - job_name: 'backend'
     metrics_path: '/metrics'  # Path to scrape metrics from (default is /metrics)
     static_configs:
-      - targets: ['backend:5000']  # Replace with your backend service host and port
+      - targets: ['34.215.182.184:5000']  # Replace with your backend service host and port
  
 
   - job_name: 'node'
     scrape_interval: 5s
     static_configs:
-      - targets: ['node-exporter:9100']
+      - targets: ['34.215.182.184:9100']

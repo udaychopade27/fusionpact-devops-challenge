@@ -1,27 +1,21 @@
 version: '3.8'
 services:
   backend:
-    build:
-      context: ./backend
-    container_name: fusionpact-backend
+    container_name: uday27/fusionpact-backend:v1.0
     ports:
       - "5000:5000" # Expose backend service on port 5000
-    networks:
-      - monitoring-net
     volumes:
-      - ./backend:/app
+      - backend-data:/app
   frontend:
-    build:
-      context: ./frontend
-    container_name: fusionpact-frontend
+    container_name: uday27/fusionpact-frontend:v1.0
     ports:
       - "5001:80" # Expose frontend service on port 5001
     volumes:
-      - ./frontend:/var/www/html  
+      - frontend-data:/var/www/html  
       - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - backend 
 
-networks:
-  monitoring-net:
-    external: true
+volumes:
+  frontend-data:
+  backend-data:

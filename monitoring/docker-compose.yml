@@ -8,8 +8,7 @@ services:
       - prometheus-data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml' 
-    networks:
-      - monitoring-net 
+
     ports:
       - 9090:9090
       
@@ -22,8 +21,7 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
-    networks:
-      - monitoring-net
+
     volumes:
       - ./grafana:/etc/grafana/provisioning/datasources
       - grafana_data:/var/lib/grafana
@@ -36,8 +34,7 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
-    networks:
-      - monitoring-net
+
     command:
       - '--path.procfs=/host/proc'
       - '--path.rootfs=/rootfs'
@@ -51,6 +48,3 @@ volumes:
   prometheus-data:
   grafana_data:
   
-networks:
-  monitoring-net:
-    external: true

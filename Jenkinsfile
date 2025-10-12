@@ -94,10 +94,9 @@ pipeline {
             steps {
                 sshagent(["ec2-ssh-key"]) {
                     sh '''
-                        scp docker-compose.yml $REMOTE_USER@$REMOTE_HOST:$RWD/
-                        scp docker.yml $REMOTE_USER@$REMOTE_HOST:$RWD/
+                        scp -o StrictHostKeyChecking=no docker-compose.yml $REMOTE_USER@$REMOTE_HOST:$RWD/
+                        scp -o StrictHostKeyChecking=no docker.yml $REMOTE_USER@$REMOTE_HOST:$RWD/
                     '''
-                    }
                 }
         }
 

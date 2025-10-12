@@ -99,6 +99,7 @@ pipeline {
                     '''
                 }
         }
+        }
 
         stage('loading_images') {
             parallel {

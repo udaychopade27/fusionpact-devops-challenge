@@ -184,7 +184,7 @@ pipeline {
                     steps {
                         sshagent(["ec2-ssh-key"]) {
                             script {
-                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker-compose -p fusionpact up -d frontend'")
+                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker compose -p fusionpact up -d frontend'")
                             }
                         }
                     }
@@ -195,7 +195,7 @@ pipeline {
                     steps {
                         sshagent(["ec2-ssh-key"]) {
                             script {
-                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker-compose -p fusionpact up -d backend'")
+                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker compose -p fusionpact up -d backend'")
                             }
                         }
                     }
@@ -206,8 +206,8 @@ pipeline {
                     steps {
                         sshagent(["ec2-ssh-key"]) {
                             script {
-                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker-compose -p fusionpact down'")
-                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker-compose -p fusionpact up -d'")
+                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker compose -p fusionpact down'")
+                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker compose -p fusionpact up -d'")
                             }
                         }
                     }
@@ -226,7 +226,7 @@ pipeline {
                     steps {
                         sshagent(["ec2-ssh-key"]) {
                             script {
-                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker-compose restart frontend'")
+                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker compose restart frontend'")
                             }
                         }
                     }
@@ -237,7 +237,7 @@ pipeline {
                     steps {
                         sshagent(["ec2-ssh-key"]) {
                             script {
-                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker-compose restart backend'")
+                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker compose restart backend'")
                             }
                         }
                     }
@@ -248,8 +248,8 @@ pipeline {
                     steps {
                         sshagent(["ec2-ssh-key"]) {
                             script {
-                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker-compose down'")
-                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker-compose up -d'")
+                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker compose down'")
+                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker compose up -d'")
                             }
                         }
                     }
@@ -260,7 +260,7 @@ pipeline {
                     steps {
                         sshagent(["ec2-ssh-key"]) {
                             script {
-                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker-compose down'")
+                                runAndLog("ssh ${REMOTE_USER}@${REMOTE_HOST} 'cd ${RWD} && docker compose down'")
                             }
                         }
                     }

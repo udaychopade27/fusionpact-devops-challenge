@@ -2,20 +2,28 @@
 // GLOBAL LOG WRAPPER
 // =========================
 def runAndLog(cmd) {
-    def output = sh(script: "${cmd} 2>&1", returnStdout: true).trim()
 
+    // First, capture output ALWAYS (stdout + stderr)
+    def output = sh(script: "${cmd} 2>&1 | tee _tmp_log.txt", returnStdout: true).trim()
+
+    // Second, capture exit status ONLY
+    def status = sh(script: "${cmd}", returnStatus: true)
+
+    // Append to master log file
     writeFile(
         file: "pipeline_logs.txt",
         text: (fileExists("pipeline_logs.txt") ? readFile("pipeline_logs.txt") : "") +
               "\n\n==============================\n" +
               "COMMAND EXECUTED:\n${cmd}\n" +
+              "EXIT STATUS: ${status}\n" +
               "------------------------------\n" +
               "OUTPUT:\n${output}\n" +
               "==============================\n"
     )
 
-    return output
+    return [output, status]
 }
+
 
 // =========================
 // MAIN PIPELINE
